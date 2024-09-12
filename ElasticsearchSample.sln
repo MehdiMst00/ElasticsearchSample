@@ -3,10 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35303.130
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ElasticsearchSample", "ElasticsearchSample\ElasticsearchSample.csproj", "{7E9510EA-43EA-4262-9203-547C37D89ABC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ElasticsearchSample", "ElasticsearchSample\ElasticsearchSample.csproj", "{7E9510EA-43EA-4262-9203-547C37D89ABC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dev", "dev", "{5C2CF232-B4AF-4377-949C-BE651B19CA7E}"
 	ProjectSection(SolutionItems) = preProject
+		.env = .env
 		docker-compose-dev.yaml = docker-compose-dev.yaml
 	EndProjectSection
 EndProject

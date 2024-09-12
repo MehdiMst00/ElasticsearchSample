@@ -12,12 +12,15 @@ builder.Services.AddSwaggerGen();
 // Add elastic search
 builder.Services.AddSingleton<ElasticsearchService>();
 builder.Services.AddScoped<ProductService>();
-builder.Services.AddSingleton<ProductIndexer>();
+builder.Services.AddScoped<ProductIndexer>();
 
 var app = builder.Build();
 
-var productIndexer = app.Services.GetRequiredService<ProductIndexer>();
-await productIndexer.IndexAllProducts();
+using (var scope = app.Services.CreateScope())
+{
+    var productIndexer = scope.ServiceProvider.GetRequiredService<ProductIndexer>();
+    await productIndexer.IndexAllProducts();
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
