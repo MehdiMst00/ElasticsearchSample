@@ -1,0 +1,22 @@
+services:
+  elasticsearch:
+    container_name: elasticsearch
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.7.1
+    environment: ['CLI_JAVA_OPTS=-Xms2g -Xmx2g','bootstrap.memory_lock=true','discovery.type=single-node','xpack.security.enabled=false', 'xpack.security.enrollment.enabled=false']
+    ports:
+      - 9200:9200
+    networks:
+      - elastic
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.7.1
+    container_name: kibana
+    environment:
+      XPACK_ENCRYPTEDSAVEDOBJECTS_ENCRYPTIONKEY: ce3952da-32ce-4a1d-9aa6-16ff43fb20b6
+    ports:
+      - 5601:5601
+    networks:
+      - elastic
+
+networks:
+  elastic:
